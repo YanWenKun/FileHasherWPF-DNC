@@ -32,11 +32,11 @@ return BitConverter.ToString(result).Replace("-", string.Empty); //将二进制�
 
 不过既然核心功能表现良好，就不折腾了。学习的事情，留给新项目吧。
 
-#### .NET Core 3.0 WPF
+#### .NET Core 3.1 WPF
 
-代码已迁移到.NET Core 3.0，纯属尝鲜，因为程序简单所以没有遇到什么困难。
+代码已迁移到.NET Core 3.1，纯属尝鲜，因为程序简单所以没有遇到什么困难。
 
-但是.NET Core 3.0生成出来的EXE文件较大（~158KiB），且需要附带DLL、PDB、JSON文件（~32KiB）。如果自带运行时而打包成单个EXE，则颇为硕大（~85MiB）。
+但是.NET Core 3.1生成出来的EXE文件较大（~158KiB），且需要附带DLL、PDB、JSON文件（~32KiB）。如果自带运行时而打包成单个EXE，则颇为硕大（~85MiB）。
 
 相比之下，基于.NET Framework生成的文件只有27KiB，且启动更快，所以目前发布下载的仍然是老版本EXE。
 
