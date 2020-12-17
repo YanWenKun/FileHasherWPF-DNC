@@ -1,13 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Resources/RecursivelyCheckAll_256x_PNG.ico</ApplicationIcon>
-    <!--<PublishSingleFile>true</PublishSingleFile>-->
-    <!--<PublishTrimmed>true</PublishTrimmed>-->
-    <!--<RuntimeIdentifier>win-x64</RuntimeIdentifier>-->
+    <!-- 老版本的 trick，现在可能已经没用了 -->
+    <!-- <PublishSingleFile>true</PublishSingleFile> -->
+    <!-- <PublishTrimmed>true</PublishTrimmed> -->
+    <!-- <RuntimeIdentifier>win-x64</RuntimeIdentifier> -->
     <!--提升初次启动性能，但会显著增大生成文件体积-->
     <!--<PublishReadyToRun>true</PublishReadyToRun>-->
   </PropertyGroup>

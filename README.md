@@ -15,12 +15,14 @@ Translation can be done easily. Strings are extracted.
 平时经常会计算文件哈希值，但又不是每次都值得开个大家伙来完成，索性写了个小工具，顺便学习一下WPF。
 
 本例中的核心代码其实就几行：
+
 ```csharp
 FileStream fs = File.OpenRead(filePath); //打开文件
 HashAlgorithm hash = HashAlgorithm.Create(hashType); //建立哈希对象
 byte[] result = hash.ComputeHash(fs); //计算并返回结果
 return BitConverter.ToString(result).Replace("-", string.Empty); //将二进制结果转换成字符串
 ```
+
 剩下一大堆便是围绕这几行代码展开的。
 
 #### 一些可改进的地方
@@ -32,12 +34,19 @@ return BitConverter.ToString(result).Replace("-", string.Empty); //将二进制�
 
 不过既然核心功能表现良好，就不折腾了。学习的事情，留给新项目吧。
 
-#### .NET Core 3.1 WPF
+#### ~~.NET Core 3.1 WPF~~ （已迁移到 .NET 5）
 
-代码已迁移到.NET Core 3.1，纯属尝鲜，因为程序简单所以没有遇到什么困难。
+代码已迁移到 .NET Core 3.1，纯属尝鲜，因为程序简单所以没有遇到什么困难。
 
-但是.NET Core 3.1生成出来的EXE文件较大（~158KiB），且需要附带DLL、PDB、JSON文件（~32KiB）。如果自带运行时而打包成单个EXE，则颇为硕大（~85MiB）。
+但是 .NET Core 3.1 生成出来的EXE文件较大（~158KiB），且需要附带 DLL、PDB、JSON 文件（~32 KiB）。如果自带运行时而打包成单个 EXE，则颇为硕大（~85 MiB）。
 
-相比之下，基于.NET Framework生成的文件只有27KiB，且启动更快，所以目前发布下载的仍然是老版本EXE。
+相比之下，基于 .NET Framework 生成的文件只有27KiB，且启动更快，所以目前发布下载的仍然是老版本EXE。
 
-期待未来的.NET 5时代。
+期待未来的 .NET 5 时代。
+
+#### .NET 5 WPF
+
+简单测试， .NET 5 下 SHA-512 哈希速度，肉眼可见快于 .NET Framework 4.0 版。
+属于对开发者“免费”的性能提升，值得升级。
+
+（猜测应该是对新硬件指令集的优化）
