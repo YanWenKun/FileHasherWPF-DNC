@@ -40,7 +40,7 @@ return BitConverter.ToString(result).Replace("-", string.Empty); //将二进制�
 
 但是 .NET Core 3.1 生成出来的EXE文件较大（~158KiB），且需要附带 DLL、PDB、JSON 文件（~32 KiB）。如果自带运行时而打包成单个 EXE，则颇为硕大（~85 MiB）。
 
-相比之下，基于 .NET Framework 生成的文件只有27KiB，且启动更快，所以目前发布下载的仍然是老版本EXE。
+相比之下，基于 .NET Framework 生成的文件只有27KiB~~，且启动更快，所以目前发布下载的仍然是老版本EXE~~。
 
 期待未来的 .NET 5 时代。
 
@@ -49,4 +49,8 @@ return BitConverter.ToString(result).Replace("-", string.Empty); //将二进制�
 简单测试， .NET 5 下 SHA-512 哈希速度，肉眼可见快于 .NET Framework 4.0 版。
 属于对开发者“免费”的性能提升，值得升级。
 
-（猜测应该是对新硬件指令集的优化）
+原因调查： [.NET Cryptography Model](https://docs.microsoft.com/en-us/dotnet/standard/security/cryptography-model)
+
+ > In .NET Core and .NET 5 and later versions, all implementation classes (*CryptoServiceProvider, *Managed, and *Cng) are wrappers for the operating system (OS) algorithms. If the OS algorithms are FIPS-certified, then .NET uses FIPS-certified algorithms.
+
+看起来性能的提升应该归功于 Windows 10。
